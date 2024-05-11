@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Labb4Book.Models.CustomerBook>
+@{
+    ViewData["Title"] = "Result";
+}
+<h1 class="display-4">Borrowed books</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Customer Id
+                </th>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Book Title
+                </th>
+                <th>
+                    Rent Date
+                </th>
+                <th>
+                    Return Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CutsomerFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookRentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookReturnDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books found for this customer.</p>
+}

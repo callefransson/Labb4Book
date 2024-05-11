@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Labb4Book.Models.CustomerBook>
+@{
+    ViewData["Title"] = "Returned books";
+}
+<h1 class="display-4">Returned books</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th>
+                Returned at
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CutsomerFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnedAt)
+                </td>
+            </tr>
+        }
+             
+             <a asp-action="Index" class="btn btn-outline-primary">Rented books</a>
+                
+    </tbody>
+</table>
